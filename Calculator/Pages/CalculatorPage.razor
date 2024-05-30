@@ -1,0 +1,36 @@
+﻿@page "/"
+@using static Calculator.Pages.CalculatorPage;
+
+<div class="container calculator">
+    <div class="row">
+        <div class="col-12">
+            <div class="screen">
+                <h3>@Equation @Answer</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-success" @onclick="() => Clear()">AC</button>
+            <button class="btn btn-info" @onclick="() => Reset()">CE</button>
+            <button class="btn btn-error" @onclick="() => Delete()">del</button>
+            <button class="btn btn-warning" @onclick="() => Calculate()">=</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 row-cols-3 m-1 align-content-center justify-content-center">
+            @foreach (string num in numbers)
+            {
+                <button class="btn-group btn-outline-primary text-center" @onclick="() => AddToString(num)">@num</button>
+            }
+
+        </div>
+        <div class="col operators d-flex flex-column">
+            @foreach (string x in operators)
+            {
+                <button class="btn btn-group-vertical" @onclick="() => AddToString(x)">@x</button>
+            }
+        </div>
+    </div>
+</div>
+
